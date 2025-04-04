@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Language Code Playground</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            position: relative;
+            min-height: 100vh;
+        }
+        h1 {
+            background: #333;
+            color: white;
+            padding: 15px;
+            margin: 0;
+        }
+        .buttons {
+            margin: 15px;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .html-btn { background: #3498db; color: white; }
+        .css-btn { background: #9b59b6; color: white; }
+        .js-btn { background: #f39c12; color: white; }
+        .c-btn { background: #e74c3c; color: white; }
+        .run-btn { background: green; color: white; }
+        .reset-btn { background: red; color: white; }
+
+        .container { display: none; padding: 10px; }
+        textarea {
+            width: 80%;
+            height: 200px;
+            font-family: monospace;
+            border: 1px solid #ccc;
+            padding: 10px;
+            resize: none;
+            display: block;
+            margin: 10px auto;
+        }
+        iframe {
+            width: 80%;
+            height: 300px;
+            border: 1px solid #333;
+            background: white;
+            margin-top: 10px;
+        }
+        /* Back Buttons */
+        .back-btn, .back-course-btn {
+            position: fixed;
+            bottom: 20px;
+            background-color: #555;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .back-btn { left: 20px; } /* Back Button (Bottom Left) */
+        .back-course-btn { right: 20px; } /* Back to Courses Button (Bottom Right) */
+    </style>
+</head>
+<body>
+
+    <h1>💻 Multi-Language Code Playground</h1>
+
+    <div class="buttons">
+        <button class="html-btn" onclick="showPanel('html')">HTML</button>
+        <button class="css-btn" onclick="showPanel('css')">CSS</button>
+        <button class="js-btn" onclick="showPanel('js')">JavaScript</button>
+        <button class="c-btn" onclick="showPanel('c')">C Language</button>
+    </div>
+
+    <!-- HTML Playground -->
+    <div id="htmlPanel" class="container">
+        <textarea id="htmlCode" placeholder="Write HTML here..."></textarea>
+        <div class="buttons">
+            <button class="run-btn" onclick="runHtml()">▶ Run</button>
+            <button class="reset-btn" onclick="document.getElementById('htmlCode').value = '';">🔄 Reset</button>
+        </div>
+        <iframe id="htmlOutput"></iframe>
+    </div>
+
+    <!-- CSS Playground -->
+    <div id="cssPanel" class="container">
+        <textarea id="cssCode" placeholder="Write CSS here..."></textarea>
+        <div class="buttons">
+            <button class="run-btn" onclick="runCss()">▶ Run</button>
+            <button class="reset-btn" onclick="document.getElementById('cssCode').value = '';">🔄 Reset</button>
+        </div>
+        <iframe id="cssOutput"></iframe>
+    </div>
+
+    <!-- JavaScript Playground -->
+    <div id="jsPanel" class="container">
+        <textarea id="jsCode" placeholder="Write JavaScript here..."></textarea>
+        <div class="buttons">
+            <button class="run-btn" onclick="runJs()">▶ Run</button>
+            <button class="reset-btn" onclick="document.getElementById('jsCode').value = '';">🔄 Reset</button>
+        </div>
+        <iframe id="jsOutput"></iframe>
+    </div>
+
+    <!-- C Language Playground -->
+    <div id="cPanel" class="container">
+        <textarea id="cCode" placeholder="Write C code here..."></textarea>
+        <div class="buttons">
+            <button class="run-btn" onclick="runCCode()">▶ Run C Code</button>
+            <button class="reset-btn" onclick="document.getElementById('cCode').value = '';">🔄 Reset</button>
+        </div>
+        <iframe id="cOutput"></iframe>
+    </div>
+
+   
+
+
+
+
+
+
+
+
+
+
+
+    <a href="courses.html">
+        <button class="back-course-btn">📚 Back to Courses</button>
+    </a>
+
+    <script>
+        function showPanel(lang) {
+            document.getElementById("htmlPanel").style.display = (lang === 'html') ? "block" : "none";
+            document.getElementById("cssPanel").style.display = (lang === 'css') ? "block" : "none";
+            document.getElementById("jsPanel").style.display = (lang === 'js') ? "block" : "none";
+            document.getElementById("cPanel").style.display = (lang === 'c') ? "block" : "none";
+        }
+
+        function runHtml() {
+            let html = document.getElementById("htmlCode").value;
+            let output = document.getElementById("htmlOutput").contentWindow.document;
+            output.open();
+            output.write(html);
+            output.close();
+        }
+
+        function runCss() {
+            let css = document.getElementById("cssCode").value;
+            let output = document.getElementById("cssOutput").contentWindow.document;
+            output.open();
+            output.write("<style>" + css + "</style><h2>CSS Applied Here</h2>");
+            output.close();
+        }
+
+        function runJs() {
+            let js = document.getElementById("jsCode").value;
+            let output = document.getElementById("jsOutput").contentWindow.document;
+            output.open();
+            output.write("<script>" + js + "<\/script><h2>JavaScript Running Here</h2>");
+            output.close();
+        }
+
+        function runCCode() {
+            alert("C Language execution requires a server-side compiler like GCC. This feature is not available in-browser.");
+        }
+    </script>
+
+</body>
+</html>

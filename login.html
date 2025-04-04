@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .login-container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 350px;
+        }
+
+        .login-container h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #212529;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .forgot-password {
+            display: block;
+            text-align: right;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .forgot-password a {
+            text-decoration: none;
+            color: #17a2b8;
+        }
+
+        button {
+            background-color: #ff7f3f;
+            color: white;
+            padding: 10px;
+            width: 100%;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        .signup-link {
+            margin-top: 15px;
+            font-size: 14px;
+        }
+
+        .signup-link a {
+            text-decoration: none;
+            color: #17a2b8;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-container">
+        <h2>Login</h2>
+        
+        <form id="loginForm">
+            <input type="email" name="email" placeholder="Email Address" required><br><br>
+            <input type="password" name="password" placeholder="Password" required><br><br>
+            <div class="forgot-password">
+                <a href="#">Forgot password?</a>
+            </div>
+            <button type="submit">Login</button>
+            <div class="signup-link">
+                Don't have an account? <a href="register.html">Register</a>
+            </div>
+        </form>
+
+        <script>
+            document.getElementById('loginForm').addEventListener('submit', function(event) {
+                event.preventDefault();
+        
+                const email = this.email.value.trim();
+                const password = this.password.value.trim();
+                const scriptURL = 'https://script.google.com/macros/s/AKfycbw9YIPK4KRg7LTp0O2zFtTSQzzFtVfQsOq8pbgYdAlnBkV0Dfj9JUEy8Oda1apTLRh3ig/exec'; // Replace with the correct URL
+        
+                fetch(scriptURL + `?email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`)
+                    .then(response => response.text())
+                    .then(data => {
+                        console.log("Server response:", data); // Debugging
+        
+                        if (data.includes("Email not found")) {
+                            alert("You are not registered.");
+                        } else if (data.includes("Invalid password")) {
+                            alert("Invalid email or password.");
+                        } else if (data.includes("Success")) {
+                            alert("Login successful!");
+
+                            // Save login info to local storage
+                            localStorage.setItem("login", "true");
+                            localStorage.setItem("userEmail", email);
+                            
+
+                            window.location.href = "myaccount.html"; // Redirect after login
+                        } else {
+                            alert("An unexpected error occurred.");
+                        }
+                    })
+                    .catch(error => {
+                        console.error("Error:", error);
+                        alert("An error occurred. Please check your network and try again.");
+                    });
+            });
+
+            // Auto-fill fields if login info exists in local storage
+            window.addEventListener('load', function() {
+                const storedEmail = localStorage.getItem("userEmail");
+                const storedPassword = localStorage.getItem("userPassword");
+
+                if (storedEmail) {
+                    document.querySelector('input[name="email"]').value = storedEmail;
+                }
+                if (storedPassword) {
+                    document.querySelector('input[name="password"]').value = storedPassword;
+                }
+            });
+        </script>
+    </div>
+
+    
+
+
+
+
+
+</body>
+</html>

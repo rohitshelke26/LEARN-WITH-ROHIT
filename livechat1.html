@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-Time Chat</title>
+    <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+        .chat-container {
+            width: 50%;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #333;
+        }
+        .message-box {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .send-btn {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .send-btn:hover {
+            background: #218838;
+        }
+        .messages {
+            margin-top: 20px;
+            text-align: left;
+            height: 300px; /* Fixed height for scrolling */
+            overflow-y: auto; /* Enables scrolling */
+            display: flex;
+            flex-direction: column; /* Ensures messages stack from top to bottom */
+        }
+        .message {
+            background: #e9ecef;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="chat-container">
+        <h2>💬 Real-Time Chat</h2>
+        <textarea id="messageInput" class="message-box" placeholder="Type your message..."></textarea><br>
+        <button class="send-btn" onclick="sendMessage()">Send</button>
+
+        <div class="messages" id="messagesContainer">
+            <!-- Messages will appear here -->
+        </div>
+    </div>
+
+    <script>
+        // Initialize Pusher
+        const pusher = new Pusher("7295a77f924355e94eb3", { cluster: "ap2" });
+        const channel = pusher.subscribe("chat");
+
+        function sendMessage() {
+            let messageInput = document.getElementById("messageInput");
+            let messageText = messageInput.value.trim();
+
+            if (messageText === "") {
+                alert("Please enter a message!");
+                return;
+            }
+
+            // Add the message immediately to the container (for current user)
+            let messagesContainer = document.getElementById("messagesContainer");
+            let messageDiv = document.createElement("div");
+            messageDiv.classList.add("message");
+            messageDiv.textContent = messageText;
+            messagesContainer.appendChild(messageDiv);
+
+            // Scroll to the bottom after sending the message
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+            // Clear the input field
+            messageInput.value = "";
+
+            // Send the message using a Pusher API request
+            fetch("http://localhost:3000/send", { // Use your server URL here
+                method: "POST",
+                body: JSON.stringify({ message: messageText }),
+                headers: { "Content-Type": "application/json" }
+            });
+        }
+
+        // Listen for new messages and update the chat in real-time
+        channel.bind("new-message", function (data) {
+            let messagesContainer = document.getElementById("messagesContainer");
+            let messageDiv = document.createElement("div");
+            messageDiv.classList.add("message");
+            messageDiv.textContent = data.message;
+            messagesContainer.appendChild(messageDiv);
+
+            // Scroll to the bottom when a new message appears
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        });
+    </script>
+
+</body>
+</html>

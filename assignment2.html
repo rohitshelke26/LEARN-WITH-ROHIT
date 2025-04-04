@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Courses | LEARN WITH ROHIT</title>
+        <link rel="stylesheet" href="styles.css">
+        <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+    
+        <!-- Navbar -->
+        <nav class="navbar">
+            <div class="logo">
+                <i class="fas fa-book"></i> LEARN WITH ROHIT
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="courses.html" class="active">Courses</a></li>
+               
+                <a href="contact.html">Contact</a>
+            </ul>
+            <a href="login.html">
+                <button style="background-color: #17c9eb; color: white; padding: 10px 20px; border: none; cursor: pointer; border-radius: 5px;">
+                    my account →
+                </button>
+            </a>
+        </nav>
+<head>
+    <br><br>  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment Submission</title>
+    <style>
+        body {
+            text-align: center;
+            background-color: #f8f8f8;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            width: 60%;
+            margin: auto;
+            background: white;
+            padding: 0px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(23, 201, 235);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background: rgb(23, 201, 235);
+            color: white;
+        }
+        .upload-btn {
+            padding: 5px;
+        }
+        .submit-btn {
+            background: rgb(23, 201, 235);
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .submit-btn:hover {
+            background: rgb(23, 201, 235);
+        }
+        .back-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px;
+            background: rgb(23, 201, 235);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+        .back-btn:hover {
+            background: black;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>📂 Assignment Submission</h1>
+        <table>
+            <tr>
+                <th>Topic</th>
+                <th>Download</th>
+                <th>Upload File</th>
+                <th>Submit</th>
+            </tr>
+            <tr>
+                <td>HTML Basics</td>
+                <td><a href="assignments/html-basics.pdf" download>Download PDF</a></td>
+                <td><input type="file" class="upload-btn" id="file-html"></td>
+                <td><button class="submit-btn" onclick="submitAssignment('HTML Basics', 'file-html')">Submit</button></td>
+            </tr>
+            <tr>
+                <td>CSS Styling</td>
+                <td><a href="assignments/css-styling.pdf" download>Download PDF</a></td>
+                <td><input type="file" class="upload-btn" id="file-css"></td>
+                <td><button class="submit-btn" onclick="submitAssignment('CSS Styling', 'file-css')">Submit</button></td>
+            </tr>
+            <tr>
+                <td>JavaScript Basics</td>
+                <td><a href="assignments/js-basics.pdf" download>Download PDF</a></td>
+                <td><input type="file" class="upload-btn" id="file-js"></td>
+                <td><button class="submit-btn" onclick="submitAssignment('JavaScript Basics', 'file-js')">Submit</button></td>
+            </tr>
+        </table>
+        <a href="course2.html" class="back-btn">⬅ Back</a>
+    </div>
+
+    <script>
+        function submitAssignment(topic, fileId) {
+            var fileInput = document.getElementById(fileId);
+            if (fileInput.files.length === 0) {
+                alert("Please choose a file before submitting.");
+                return;
+            }
+            
+            var file = fileInput.files[0];
+            var formData = new FormData();
+            formData.append("file", file);
+            formData.append("topic", topic);
+            
+            fetch("https://script.google.com/macros/s/YOUR_GOOGLE_SCRIPT_URL/exec", {
+                method: "POST",
+                body: formData
+            }).then(response => response.text())
+              .then(data => alert("Assignment submitted successfully!"))
+              .catch(error => alert("Error submitting assignment."));
+        }
+    </script>
+      <br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br>
+ <footer style="background-color: #1be8ff; text-align: center; padding: 14px; font-size: 14px; color: #777;">
+    Copyright ©2025 All rights reserved | This Website is made  
+    <span style="color: #20c997;"></span> by Rohit Shelke
+</footer>
+</body>
+</html>

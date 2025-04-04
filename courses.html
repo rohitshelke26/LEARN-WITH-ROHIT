@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   
+   
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courses | LEARN WITH ROHIT</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <i class="fas fa-book"></i> LEARN WITH ROHIT
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="courses.html" class="active">Courses</a></li>
+           
+            <a href="contact.html">Contact</a>
+        </ul>
+        <a href="login.html">
+            <button style="background-color: #17c9eb; color: white; padding: 10px 20px; border: none; cursor: pointer; border-radius: 5px;">
+                my account →
+            </button>
+        </a>
+    </nav>
+
+    <!-- Courses Banner -->
+    <section class="courses-banner">
+        <h2>Courses</h2>
+        <p>Home / Courses</p>
+    </section>
+
+    <!-- Popular Courses Section -->
+    <section class="popular-courses">
+        <h3 class="section-title">COURSES</h3>
+        <h2>Popular Courses</h2>
+        <div class="courses-container">
+            <div class="course-card">
+                <h3>12000</h3>
+                <p>★★★★★ (123)</p>
+                <h4>Web Design & Development Course for Beginners</h4>
+                <div class="course-info">
+                    <span>👤 Uttam Sir </span>
+                    <span>⏳ 1.49 Hrs</span>
+                    <span>👥 30 Students</span>
+                
+               
+            </div>
+            
+            <style>
+                .enroll-btn {
+                    display: inline-block;
+                    color: #4A148C;
+                    font-weight: bold;
+                    text-decoration: none;
+                    font-size: 16px;
+                    transition: 0.3s ease-in-out;
+                    animation: pulse 1.5s infinite alternate;
+                }
+            
+                .enroll-btn:hover {
+                    color: #8E24AA;
+                    text-decoration: underline;
+                }
+            
+                @keyframes pulse {
+                    0% {
+                        transform: scale(1);
+                        opacity: 1;
+                    }
+                    100% {
+                        transform: scale(1.1);
+                        opacity: 0.8;
+                    }
+                }
+            </style>
+            
+            <a href="course1.html" class="enroll-btn" onclick="return checkLogin()">Enroll Now</a>
+
+            
+            
+            
+            
+        </div>
+
+    <script>
+        function showFeatures() {
+            document.getElementById("features-section").style.display = "block";
+        }
+    </script>
+            <div class="course-card">
+                <h3>23456</h3>
+                <p>★★★★★ (123)</p>
+                <h4>Java Programming</h4>
+                <div class="course-info">
+                    <span>👤 Mohit Sir</span>
+                    <span>⏳ 1.49 Hrs</span>
+                    <span>👥 30 Students</span>
+                </div>
+                <style>
+                    .enroll-btn {
+                        display: inline-block;
+                        color: #ffffff;
+                        font-weight: bold;
+                        text-decoration: none;
+                        font-size: 16px;
+                        transition: 0.3s ease-in-out;
+                        animation: pulse 1.5s infinite alternate;
+                    }
+                
+                    .enroll-btn:hover {
+                        color: #ffffff;
+                        text-decoration: underline;
+                    }
+                
+                    @keyframes pulse {
+                        0% {
+                            transform: scale(1);
+                            opacity: 1;
+                        }
+                        100% {
+                            transform: scale(1.1);
+                            opacity: 0.8;
+                        }
+                    }
+                </style>
+                
+                <a href="course2.html" class="enroll-btn" onclick="return checkLogin()">Enroll Now</a>
+                
+            </div>
+    
+            <div class="course-card">
+                <h3>999999</h3>
+                <p>★★★★★ (123)</p>
+                <h4>DBMS</h4>
+                <div class="course-info">
+                    <span>👤 Devyani Ma'am</span>
+                    <span>⏳ 1.49 Hrs</span>
+                    <span>👥 30 Students</span>
+                </div>
+                <style>
+                    .enroll-btn {
+                        display: inline-block;
+                        color: #4A148C;
+                        font-weight: bold;
+                        text-decoration: none;
+                        font-size: 16px;
+                        transition: 0.3s ease-in-out;
+                        animation: pulse 1.5s infinite alternate;
+                    }
+                
+                    .enroll-btn:hover {
+                        color: #ffffff;
+                        text-decoration: underline;
+                    }
+                
+                    @keyframes pulse {
+                        0% {
+                            transform: scale(1);
+                            opacity: 1;
+                        }
+                        100% {
+                            transform: scale(1.1);
+                            opacity: 0.8;
+                        }
+                    }
+                </style>
+                
+                <a href="course3.html" class="enroll-btn" onclick="return checkLogin()">Enroll Now</a>
+                
+            </div>
+        </div>
+    </section>
+    
+    <style>
+        .courses-container {
+            display: flex;
+            flex-direction: row; /* Aligns items in a row */
+            justify-content: center; /* Centers courses horizontally */
+            gap: 20px; /* Adds spacing between courses */
+            flex-wrap: wrap; /* Allows wrapping if screen size is small */
+        }
+    
+        .course-card {
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            width: 250px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+        }
+    
+        .enroll-btn {
+            margin-top: 10px;
+            padding: 8px 12px;
+            background-color: #007bff;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+    
+        .enroll-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+   <!DOCTYPE html>
+   <html lang="en">
+   <head>
+       <meta charset="UTF-8">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <title>FAQ Section</title>
+       <style>
+           body {
+               font-family: Arial, sans-serif;
+               background-color: #f8f8f8;
+               text-align: center;
+               margin: 0;
+               padding: 0;
+           }
+           .faq-container {
+               width: 80%;
+               margin: auto;
+               margin-top: 50px;
+           }
+           .faq-header {
+               font-size: 28px;
+               font-weight: bold;
+               text-align: center;
+               margin-bottom: 20px;
+           }
+           .faq-header span {
+               border-bottom: 4px solid #f4a261;
+               padding-bottom: 5px;
+           }
+           .faq-item {
+               background-color: #17c9eb;
+               color: white;
+               border-radius: 10px;
+               padding: 20px;
+               margin-bottom: 15px;
+               text-align: left;
+               cursor: pointer;
+           }
+           .faq-item h3 {
+               margin: 0;
+               font-size: 20px;
+           }
+           .faq-content {
+               margin-top: 10px;
+               display: none;
+           }
+           .faq-item.active .faq-content {
+               display: block;
+           }
+       </style>
+   </head>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   <div style="width: 80%; margin: 50px auto; background: #17c9eb; padding: 30px; border-radius: 10px; 
+   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); text-align: center;">
+<h2 style="font-size: 28px; font-weight: bold;">
+<span style="border-bottom: 4px solid #f4a261; padding-bottom: 5px;">
+   FREE INBUILT COMPILER FOR JAVA / CSS / HTML / C
+</span>
+</h2>
+<a href="compiler.html">
+<button style="margin-top: 20px; padding: 12px 20px; background-color: #007bff; color: white; 
+             border: none; border-radius: 5px; font-size: 16px; cursor: pointer;">
+   Code Now
+</button>
+</a>
+</div>
+
+<br><br><br><br>
+   <body>
+   
+       <div class="faq-container">
+           <h2 class="faq-header"><span>Questions About Our Online Courses</span></h2>
+   
+           <div class="faq-item" onclick="toggleFAQ(this)">
+               <h3>How does LEARN WITH ROHIT ensure the quality of its courses?    </h3>
+               <div class="faq-content">
+                   <p>At LEARN WITH ROHIT, course quality is our priority. We collaborate with industry experts to design and update our curriculum, ensuring it aligns with the latest trends and standards. Our rigorous review process includes user feedback and continuous assessments.</p>
+               </div>
+           </div>
+   
+           <div class="faq-item" onclick="toggleFAQ(this)">
+               <h3>How does LEARN WITH ROHIT stand out from other online learning platforms? </h3>
+               <div class="faq-content">
+                   <p>LEARN WITH ROHIT distinguishes itself through diverse, expert-curated content and an interactive learning environment. Our courses are crafted by industry professionals, ensuring real-world relevance. We prioritize user engagement with interactive elements, fostering a dynamic and effective learning experience.</p>
+               </div>
+           </div>
+
+           
+
+        <div class="faq-item" onclick="toggleFAQ(this)">
+            <h3>How does LEARN WITH ROHIT ensure the accessibility of its courses for learners with different schedules?
+            </h3>
+            <div class="faq-content">
+                <p>At LEARN WITH ROHIT, we prioritize accessibility by offering on-demand courses. Learners have the flexibility to access materials at their convenience, accommodating various schedules. Additionally, our modular course structure allows for bite-sized learning, making it easy to integrate education into busy routines. We believe in providing a seamless learning experience for everyone, empowering individuals to pursue education on their terms without compromising their existing commitments.
+                </p>
+            </div>
+        </div>
+
+        <div class="faq-item" onclick="toggleFAQ(this)">
+            <h3>Can I get a refund if I'm unsatisfied with a course on LEARN WITH ROHIT?
+
+            </h3>
+            <div class="faq-content">
+                <p>Absolutely! We offer a satisfaction guarantee. If you're not content within the first 30 days of enrollment, we provide a full refund, no questions asked. We believe in the value of our courses and want learners to explore without hesitation, confident in the quality of education they'll receive on LEARN WITH ROHIT.
+                </p>
+            </div>
+        </div>
+
+       </div>
+   
+       <script>
+           function toggleFAQ(element) {
+               element.classList.toggle("active");
+           }
+       </script>
+   
+ 
+
+   <script>
+    function checkLogin() {
+        var isLoggedIn = localStorage.getItem("login");
+
+        if (isLoggedIn !== "true") {
+            alert("Please log in first to enroll.");
+            window.location.href = "login.html"; // Redirect to login page
+            return false; // Prevent enrollment
+        }
+        return true; // Allow enrollment if logged in
+    }
+</script>
+
+
+
+
+
+
+   </body>
+   </html>
+   
+     <footer style="background-color: #1be8ff; text-align: center; padding: 14px; font-size: 14px; color: #777;">
+        Copyright ©2025 All rights reserved | This Website is made  
+        <span style="color: #20c997;"></span> by Rohit Shelke
+    </footer>
+
+
+    

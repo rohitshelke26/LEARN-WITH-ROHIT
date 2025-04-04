@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        /* Navigation Bar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 10%;
+            background: white;
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .navbar .logo {
+            font-size: 20px;
+            font-weight: bold;
+            color: #00C8E5;
+            text-decoration: none;
+        }
+        .navbar .menu {
+            display: flex;
+            gap: 20px;
+        }
+        .navbar .menu a {
+            text-decoration: none;
+            color: black;
+            font-size: 16px;
+        }
+        .navbar .menu a.active {
+            color: #00C8E5;
+            font-weight: bold;
+            text-decoration: underline;
+        }
+        .navbar .account-btn {
+            background-color: #00C8E5;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        /* Contact Page Styling */
+        .container {
+            width: 80%;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        .contact-details {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .contact-info {
+            width: 45%;
+        }
+        form {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background: #007bff;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .map {
+            width: 100%;
+            height: 300px;
+            border: none;
+        }
+    </style>
+   
+</head>
+<body>
+
+    <!-- Navigation Panel -->
+    <div class="navbar">
+        <a href="#" class="logo">LEARN WITH ROHIT</a>
+        <div class="menu">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="courses.html">Courses</a>
+            <a href="contact.html" class="active">Contact</a>
+        </div>
+        <a href="login.html">
+            <button style="background-color: #17c9eb; color: white; padding: 10px 20px; border: none; cursor: pointer; border-radius: 5px;">
+                my account →
+            </button>
+        </a>
+    </div>
+
+    <!-- Contact Page Content -->
+    <div class="container">
+        <h2>Contact For Any Query</h2>
+        <div class="contact-details">
+            <div class="contact-info">
+                <h3>Get In Touch</h3>
+                <p><strong>Office:</strong> ADYPU</p>
+                <p><strong>Mobile:</strong> 952901****</p>
+                <p><strong>Email:</strong> learnwithrohit@gmail.com</p>
+            </div>
+
+          
+
+
+
+
+            <form id="contactForm">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <input type="text" name="subject" placeholder="Subject" required>
+                <textarea name="message" rows="5" placeholder="Message" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        
+            <script>
+                document.getElementById("contactForm").addEventListener("submit", function (event) {
+                    event.preventDefault();
+        
+                    var formData = new FormData(event.target);
+                    var data = {};
+                    formData.forEach((value, key) => { data[key] = value });
+        
+                    fetch("https://script.google.com/macros/s/AKfycbx2_DLqSg0pyj-vOH7hrJJDA024ozqMaIVHLxKdKNZhVOtvPlqJSZETHQrCcEQwRtUz/exec", {
+                        method: "POST",
+                        mode: "no-cors",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify(data)
+                    }).then(() => {
+                        alert("Your message has been sent successfully!");
+                        event.target.reset();
+                    }).catch(error => {
+                        console.error("Error:", error);
+                        alert("There was an error submitting your message.");
+                    });
+                });
+            </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+       
+        
+        <!-- Success Popup -->
+        <div id="successPopup" style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%);
+            background:#4CAF50; color:white; padding:20px; border-radius:5px;">
+            Message Sent Successfully!
+        </div>
+      
+
+            <!-- Google Maps -->
+    <iframe class="map" 
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d241317.1160999668!2d72.7411!3d19.0822!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b628fdf7d58f%3A0x8f1735e6b6e4c0d3!2sMumbai%2C%20Maharashtra%2C%20India!5e0!3m2!1sen!2sus!4v1617732938594!5m2!1sen!2sus"
+    allowfullscreen="" loading="lazy">
+</iframe>
+<br><br>
+<!-- Social Media Icons -->
+<div style="text-align: center; margin-top: 20px;">
+    <a href="#" style="display: inline-block; margin: 0 10px;">
+        <img src="image/facebook.png" alt="Facebook" width="40" height="40">
+    </a>
+    <a href="https://www.instagram.com/rohit_shelke_26?igsh=dTQ1MzFndGx3ZXBy" style="display: inline-block; margin: 0 10px;">
+        <img src="image/insta.jpeg" alt="Instagram" width="40" height="40">
+    </a>
+    <a href="#" style="display: inline-block; margin: 0 10px;">
+        <img src="image/twitter.png" alt="Twitter" width="40" height="40">
+    </a>
+    <a href="https://www.linkedin.com/in/rohit-shelke-02429832b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" style="display: inline-block; margin: 0 10px;">
+        <img src="image/linkedin.png" alt="linkedin" width="40" height="40">
+    </a>
+</div>
+
+    
+   
+
+
+
+    
+        
+       
+</body>
+
+</html>

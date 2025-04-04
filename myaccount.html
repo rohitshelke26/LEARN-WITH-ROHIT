@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Account</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background: #fff;
+            padding: 20px;
+            width: 350px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            text-align: center;
+        }
+        .profile-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: #ddd;
+            margin: 0 auto 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            color: #666;
+        }
+        h2 {
+            margin: 10px 0;
+        }
+        p {
+            color: #555;
+        }
+        .logout-btn {
+            margin-top: 20px;
+            display: inline-block;
+            background: #d9534f;
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="profile-img">👤</div>
+        <h2 id="userName">User</h2>
+        <p id="userEmail">user@example.com</p>
+        <a href="#" class="logout-btn" onclick="logoutUser()">Logout</a>
+    </div>
+
+    <script>
+        // Check if user is registered before showing My Account
+        document.addEventListener("DOMContentLoaded", function() {
+            const userName = localStorage.getItem("userName") || "User";
+            const userEmail = localStorage.getItem("userEmail") || "user@example.com";
+
+            document.getElementById("userName").textContent = userName;
+            document.getElementById("userEmail").textContent = userEmail;
+        });
+
+        function logoutUser() {
+            localStorage.setItem("logout", "true"); // Save logout status
+            localStorage.removeItem("login"); // Remove login status
+            localStorage.removeItem("userEmail"); // Remove user email
+            localStorage.removeItem("userName"); // Remove user name
+            
+            alert("You are logged out."); // Logout message
+            window.location.href = "login.html"; // Redirect to login page
+        }
+    </script>
+
+</body>
+</html>
